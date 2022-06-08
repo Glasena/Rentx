@@ -68,4 +68,6 @@ export class CreateCars1654648751997 implements MigrationInterface {
         await queryRunner.dropTable("cars");
     }
 
+
+
 }
