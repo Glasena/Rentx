@@ -3,8 +3,8 @@ import { UsersRepository } from "../../modules/accounts/infra/typeorm/repositori
 import { IUsersRepository } from "../../modules/accounts/repositories/IUsersRepository"
 
 import { ICategoriesRepository } from '../../modules/cars/repositories/ICategoriesRepository'
-import { CategoriesRepository } from '../../modules/cars/infra/typeorm/entities/repositories/CategoriesRepository'
-import { SpecificationRepository } from '../../modules/cars/infra/typeorm/entities/repositories/SpecificationRepository'
+import { CategoriesRepository } from '../../modules/cars/infra/typeorm/repositories/CategoriesRepository'
+import { SpecificationRepository } from '../../modules/cars/infra/typeorm/repositories/SpecificationRepository'
 import { ISpecificationRepository } from '../../modules/cars/repositories/ISpecificationRepository'
 
 // ICategoriesRepository
