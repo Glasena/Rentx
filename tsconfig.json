@@ -7,19 +7,19 @@
         "baseUrl": "./src",
         "paths": {
             "@modules/*": [
-                "@modules/*"
+                "modules/*"
             ],
             "@config/*": [
-                "@config/*"
+                "config/*"
             ],
             "@shared/*": [
-                "@shared/*"
+                "shared/*"
             ],
             "@errors/*": [
-                "@errors/*"
+                "errors/*"
             ],
             "@utils/*": [
-                "@errors/*"
+                "utils/*"
             ]
         },
         "resolveJsonModule": true,

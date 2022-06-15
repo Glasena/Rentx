@@ -1,8 +1,6 @@
-import { CarsRepositoryInMemory } from '../../../../modules/cars/repositories/in-memory/CarsRepositoryInMemory';
-import { AppError } from './../../../../shared/errors/AppError';
-/*import { CarsRepositoryInMemory } from "modules/cars/repositories/in-memory/CarsRepositoryInMemory";*/
+import { CarsRepositoryInMemory } from '@modules/cars/repositories/in-memory/CarsRepositoryInMemory';
+import { AppError } from "@shared/errors/AppError";
 import { CreateCarUseCase } from './CreateCarUseCase';
-/*import { CreateCarUseCase } from "./CreateCarUseCase";*/
 
 let createCarUseCase: CreateCarUseCase;
 let carsRepositoryInMemory: CarsRepositoryInMemory;
@@ -25,9 +23,9 @@ describe("Create Car", () => {
             category_id: "category"
         });
 
-        expect(car).toHaveProperty("id");
+        expect(car).toHaveProperty('id');
 
-    })
+    });
 
     it("should not create a car with the same license plate", async () => {
         expect(async () => {
@@ -51,7 +49,7 @@ describe("Create Car", () => {
                 category_id: "category"
             });
 
-        }).rejects.toBeInstanceOf(AppError);
+        }).rejects.toEqual(new AppError('Car already exists!'));
 
     });
 
