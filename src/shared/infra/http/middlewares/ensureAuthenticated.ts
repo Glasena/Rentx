@@ -1,5 +1,6 @@
 import { AppError } from '../../../errors/AppError';
 import { NextFunction, Request, Response } from "express";
+import "express-async-errors";
 import { verify } from "jsonwebtoken";
 import { UsersRepository } from "../../../../modules/accounts/infra/typeorm/repositories/UsersRepository";
 
