@@ -1,30 +1,30 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\yarn\bin\yarn.js add tsconfig-parths -D
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add day.js
 
 PATH: 
-  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\Glasena\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Program Files\PuTTY\;C:\Program Files\MySQL\MySQL Server 8.0\bin;;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Users\Glasena\AppData\Local\Microsoft\WindowsApps;C:\Users\Glasena\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Glasena\AppData\Roaming\nvm;C:\Program Files\nodejs
+  C:\Users\Glasena\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Glasena\bin;C:\Python310\Scripts;C:\Python310;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Users\Glasena\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Program Files\PuTTY;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\nodejs;C:\ProgramData\chocolatey\bin;C:\Program Files\dotnet;C:\Program Files (x86)\Yarn\bin;C:\Users\Glasena\AppData\Local\Microsoft\WindowsApps;C:\Users\Glasena\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Glasena\AppData\Roaming\npm;C:\Users\Glasena\.dotnet\tools;C:\Users\Glasena\AppData\Local\Yarn\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
 
 Yarn version: 
-  1.22.17
+  1.22.19
 
 Node version: 
-  16.13.2
+  18.10.0
 
 Platform: 
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/tsconfig-parths: Not found
-      at Request.params.callback [as _callback] (C:\Users\Glasena\AppData\Roaming\nvm\v16.13.2\node_modules\yarn\lib\cli.js:67029:18)
-      at Request.self.callback (C:\Users\Glasena\AppData\Roaming\nvm\v16.13.2\node_modules\yarn\lib\cli.js:140883:22)
-      at Request.emit (node:events:390:28)
-      at Request.<anonymous> (C:\Users\Glasena\AppData\Roaming\nvm\v16.13.2\node_modules\yarn\lib\cli.js:141855:10)
-      at Request.emit (node:events:390:28)
-      at IncomingMessage.<anonymous> (C:\Users\Glasena\AppData\Roaming\nvm\v16.13.2\node_modules\yarn\lib\cli.js:141777:12)
-      at Object.onceWrapper (node:events:509:28)
-      at IncomingMessage.emit (node:events:402:35)
-      at endReadableNT (node:internal/streams/readable:1343:12)
-      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+  Error: https://registry.yarnpkg.com/day.js: Not found
+      at params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:66145:18)
+      at self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:140890:22)
+      at Request.emit (node:events:513:28)
+      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141862:10)
+      at Request.emit (node:events:513:28)
+      at IncomingMessage.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141784:12)
+      at Object.onceWrapper (node:events:627:28)
+      at IncomingMessage.emit (node:events:525:35)
+      at endReadableNT (node:internal/streams/readable:1359:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
 
 npm manifest: 
   {
@@ -33,9 +33,10 @@ npm manifest:
       "main": "index.js",
       "license": "MIT",
       "scripts": {
-          "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
+          "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
           "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
-          "test": "jest"
+          "test": "jest",
+          "seed:admin": "ts-node-dev -r tsconfig-paths/register src/shared/infra/typeorm/seed/admin.ts"
       },
       "dependencies": {
           "bcryptjs": "^2.4.3",
@@ -72,6 +73,7 @@ npm manifest:
           "prettier": "^2.6.0",
           "ts-jest": "^28.0.3",
           "ts-node-dev": "^1.1.8",
+          "tsconfig-paths": "^4.0.0",
           "typescript": "^4.6.2"
       }
   }
@@ -4137,6 +4139,15 @@ Lockfile:
       "@types/json5" "^0.0.29"
       json5 "^1.0.1"
       minimist "^1.2.0"
+      strip-bom "^3.0.0"
+  
+  tsconfig-paths@^4.0.0:
+    version "4.0.0"
+    resolved "https://registry.yarnpkg.com/tsconfig-paths/-/tsconfig-paths-4.0.0.tgz#1082f5d99fd127b72397eef4809e4dd06d229b64"
+    integrity sha512-SLBg2GBKlR6bVtMgJJlud/o3waplKtL7skmLkExomIiaAtLGtVsoXIqP3SYdjbcH9lq/KVv7pMZeCBpLYOit6Q==
+    dependencies:
+      json5 "^2.2.1"
+      minimist "^1.2.6"
       strip-bom "^3.0.0"
   
   tsconfig@^7.0.0:
