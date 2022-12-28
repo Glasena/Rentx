@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add day.js
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add supertest @types/supertest -D
 
 PATH: 
   C:\Users\Glasena\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Glasena\bin;C:\Python310\Scripts;C:\Python310;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Users\Glasena\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Program Files\PuTTY;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\nodejs;C:\ProgramData\chocolatey\bin;C:\Program Files\dotnet;C:\Program Files (x86)\Yarn\bin;C:\Users\Glasena\AppData\Local\Microsoft\WindowsApps;C:\Users\Glasena\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Glasena\AppData\Roaming\npm;C:\Users\Glasena\.dotnet\tools;C:\Users\Glasena\AppData\Local\Yarn\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
@@ -14,17 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/day.js: Not found
-      at params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:66145:18)
-      at self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:140890:22)
-      at Request.emit (node:events:513:28)
-      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141862:10)
-      at Request.emit (node:events:513:28)
-      at IncomingMessage.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141784:12)
-      at Object.onceWrapper (node:events:627:28)
-      at IncomingMessage.emit (node:events:525:35)
-      at endReadableNT (node:internal/streams/readable:1359:12)
-      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+  Error: EPERM: operation not permitted, unlink 'E:\Estudo\Ignite\Chapter_2\RENTALX\node_modules\.bin\ts-node-dev'
 
 npm manifest: 
   {
@@ -41,6 +31,7 @@ npm manifest:
       "dependencies": {
           "bcryptjs": "^2.4.3",
           "csv-parse": "^5.0.4",
+          "dayjs": "^1.11.7",
           "express": "^4.17.3",
           "express-async-errors": "^3.1.1",
           "jsonwebtoken": "^8.5.1",
@@ -1483,6 +1474,11 @@ Lockfile:
     version "5.0.4"
     resolved "https://registry.yarnpkg.com/csv-parse/-/csv-parse-5.0.4.tgz#97e5e654413bcf95f2714ce09bcb2be6de0eb8e3"
     integrity sha512-5AIdl8l6n3iYQYxan5djB5eKDa+vBnhfWZtRpJTcrETWfVLYN0WSj3L9RwvgYt+psoO77juUr8TG8qpfGZifVQ==
+  
+  dayjs@^1.11.7:
+    version "1.11.7"
+    resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.7.tgz#4b296922642f70999544d1144a2c25730fce63e2"
+    integrity sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==
   
   debug@2.6.9, debug@^2.6.9:
     version "2.6.9"
