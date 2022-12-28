@@ -3,8 +3,13 @@ import request  from "supertest";
 
 describe("Create Category Controller", async () => {
 
-    it("test", async () => {
-        await request(app).get("/cars/available").expect(200);
-    })
+    it("Should be Able to Create a New Category", async () => {
+        const response = await request(app).post("/categories").send({
+            name: "Category Supertest",
+            description: "Category Supertest Description"
+        });
 
+        expect(response.status).toBe(201);
+
+    });
 });
