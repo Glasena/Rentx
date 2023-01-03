@@ -3,13 +3,14 @@ import { Rental } from '@modules/rentals/infra/typeorm/entities/Rental';
 import { IRentalsRepository } from '@modules/rentals/repositories/IRentalsRepository';
 import { IDateProvider } from '@shared/container/providers/DateProvider/IDateProvider';
 import { AppError } from '@shared/errors/AppError';
-import { inject } from "tsyringe";
+import { inject, injectable } from "tsyringe";
 
 interface IRequest {
     id: string;
     user_id: string;
 }
 
+@injectable()
 class DevolutionRentalUseCase {
     
     constructor(        
@@ -24,8 +25,7 @@ class DevolutionRentalUseCase {
     async execute({ id, user_id}: IRequest): Promise<Rental> {
     
         const rental = await this.rentalsRepository.findById(id);
-        const car = await this.carsRepository.findById(id);
-
+        const car = await this.carsRepository.findById(rental.car_id);
 
         if(!rental) {
             throw new AppError("Rental does not exists !");
