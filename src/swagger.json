@@ -9,6 +9,40 @@
         }
     },
     "paths": {
+        "/sessions": {
+            "post": {
+                "tags": ["Session"],
+                "summary": "Authentication User",
+                "description": "Authentication user",
+                "requestBody": {
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "properties":{
+                                    "email":{
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                },
+                
+                "responses": {
+                    "200":{
+                        "description":"Success"
+                    },
+                    "400":{
+                        "description":"Email or password incorrect!"
+                    }
+                }
+            }
+        },
         "/categories": {
             "post": {
                 "tags": [
@@ -16,6 +50,9 @@
                 ],
                 "summary": "Create a category",
                 "description": "Create a new category",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -143,6 +180,15 @@
                 "description": {
                     "type": "string"
                 }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
             }
         }
     }
