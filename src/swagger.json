@@ -180,6 +180,9 @@
                 "tags": ["Cars"],
                 "summary": "Create a New Car",
                 "description": "Create a new Car",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -195,6 +198,50 @@
                     },
                     "400": {
                         "description": "Car already exists!"
+                    }
+                }
+            }
+        },
+        "/cars/images/{id}": {
+            "post": {
+                "tags": ["Cars"],
+                "summary": "Upload Images",
+                "description": "Upload Images",
+                "security": [
+                    { "bearerAuth": []}
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Car Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "images": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "binary"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "201": {
+                        "description": "Created"
                     }
                 }
             }
