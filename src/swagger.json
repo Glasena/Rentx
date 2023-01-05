@@ -119,6 +119,9 @@
                 "tags": [
                     "Category"
                 ],
+                "security": [
+                    { "bearerAuth": [] }
+                ],
                 "summary": "Upload a new category",
                 "description": "Upload a new category",
                 "requestBody": {
@@ -148,6 +151,9 @@
                 "tags": [
                     "Specifications"
                 ],
+                "security": [
+                    { "bearerAuth": [] }
+                ],
                 "summary": "Create a Specification",
                 "description": "Create a new specification",
                 "requestBody": {
@@ -168,6 +174,30 @@
                     }
                 }
             }
+        },
+        "/cars": {
+            "post": {
+                "tags": ["Cars"],
+                "summary": "Create a New Car",
+                "description": "Create a new Car",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/Car"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Car already exists!"
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -178,6 +208,32 @@
                     "type": "string"
                 },
                 "description": {
+                    "type": "string"
+                }
+            }
+        },
+        "Car": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type":"string"
+                },
+                "description": {
+                    "type":"string"
+                },
+                "daily_rate": {
+                    "type": "number"
+                },
+                "license_plate": {
+                    "type": "string"
+                },
+                "fine_amount": {
+                    "type": "number"
+                },
+                "brand": {
+                    "type": "string"
+                },
+                "category_id": {
                     "type": "string"
                 }
             }
