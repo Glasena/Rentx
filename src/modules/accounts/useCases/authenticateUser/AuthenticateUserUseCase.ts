@@ -1,8 +1,11 @@
+import { IUsersTokensRepository } from '@modules/accounts/repositories/IUsersTokensRepository';
 import { AppError } from '../../../../shared/errors/AppError';
 import { inject, injectable } from "tsyringe";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 import { sign } from "jsonwebtoken"
 import { compare } from "bcryptjs";
+import auth from '@config/auth';
+import { IDateProvider } from '@shared/container/providers/DateProvider/IDateProvider';
 
 interface IRequest {
     email: string;
@@ -15,6 +18,7 @@ interface IResponse {
         email: string
     }
     token: string;
+    refresh_token: string;
 }
 
 @injectable()
@@ -22,7 +26,11 @@ class AuthenticateUserUseCase {
 
     constructor(
         @inject("UsersRepository")
-        private usersRepository: IUsersRepository
+        private usersRepository: IUsersRepository,
+        @inject("UsersTokensRepository")
+        private usersTokensRepository: IUsersTokensRepository,
+        @inject("DayjsDateProvider")
+        private dateProvider: IDateProvider
     ) { }
 
 
@@ -30,6 +38,7 @@ class AuthenticateUserUseCase {
 
         // Usuario Existe
         const user = await this.usersRepository.findByEmail(email);
+        const { expires_in_token, secret_refresh_token, secret_token, expires_in_refresh_token, expires_refresh_token_days} = auth;
 
         if (!user) {
             throw new AppError("User Does Not Exists !");
@@ -43,16 +52,27 @@ class AuthenticateUserUseCase {
         }
 
         // Gerar Token
-        const token = sign({}, "26544895d8ece08774811fa74172b533", {
+        const token = sign({}, secret_token, {
             subject: user.id,
-            expiresIn: "1d"
+            expiresIn: expires_in_token
+        })
+
+        const refresh_token = sign({ email }, secret_refresh_token, { subject: user.id, expiresIn: expires_in_refresh_token });
+
+        const refresh_token_expires_date = this.dateProvider.addDays(expires_refresh_token_days);
+
+        await this.usersTokensRepository.create({
+            user_id: user.id,
+            expires_date: refresh_token_expires_date,
+            refresh_token: refresh_token,
         })
 
         const tokenReturn: IResponse = {
             token, user: {
                 name: user.name,
                 email: user.email
-            }
+            },
+            refresh_token
         }
 
         return tokenReturn

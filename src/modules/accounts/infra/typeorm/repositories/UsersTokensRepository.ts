@@ -3,7 +3,7 @@ import { IUsersTokensRepository } from "@modules/accounts/repositories/IUsersTok
 import { getRepository, Repository } from "typeorm";
 import { UserTokens } from "../entities/UserTokens";
 
-class UsersTokensRepository implements IUsersTokensRepository {
+export class UsersTokensRepository implements IUsersTokensRepository {
 
     private repository: Repository<UserTokens>
 
