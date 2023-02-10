@@ -5,6 +5,7 @@ import { v4 as uuidV4 } from "uuid";
 import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
 import { AppError } from '@shared/errors/AppError';
 import { IMailProvider } from '@shared/container/providers/MailProvider/IMailProvider';
+import { resolve } from "path";
 
 @injectable()
 class SendForgotPasswordMailUseCase {
@@ -26,6 +27,8 @@ class SendForgotPasswordMailUseCase {
 
         const user = await this.usersRepository.findByEmail(email);
 
+        const templatePath = resolve(__dirname, "..", "..", "views", "emails", "forgotPassword.hbs")
+
         if (!user) {
             throw new AppError("User Does not exists !");
         }
@@ -40,7 +43,12 @@ class SendForgotPasswordMailUseCase {
             expires_date
         })
 
-        await this.mailProvider.sendMail(email, "Recuperação de Senha", "O link para o Reset é " + token);
+        const vars = {
+            name: user.name,
+            link:`${process.env.FORGOT_MAIL_URL}${token}`
+        }
+
+        await this.mailProvider.sendMail(email, "Recuperação de Senha", vars, templatePath);
 
     }
 
