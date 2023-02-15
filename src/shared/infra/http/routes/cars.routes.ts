@@ -8,7 +8,7 @@ import { UploadCarImagesController } from '@modules/cars/useCases/uploadCarImage
 import multer from 'multer';
 import uploadConfig from "../../../../config/upload"
 
-const upload = multer(uploadConfig.upload("./tmp/cars"));
+const upload = multer(uploadConfig);
 
 const carsRoutes = Router();
 
