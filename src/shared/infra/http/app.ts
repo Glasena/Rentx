@@ -11,6 +11,7 @@ import swaggerFile from "../../../swagger.json"
 
 import createConnection from "@shared/infra/typeorm";
 import "../../container";
+import "dotenv/config";
 
 createConnection();
 const app = express();
