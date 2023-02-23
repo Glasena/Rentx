@@ -3,3 +3,4 @@ coverage
 tmp/avatar/*
 tmp/cars/*
 .env
+dist
